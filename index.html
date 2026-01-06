@@ -1,280 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cute Notes App</title>
-
-  <style>
-    :root{
-      --pink:#ffb6d9;
-      --pink-dark:#ff8fc8;
-      --yellow:#fff3a3;
-      --blue:#b4e1ff;
-      --card:#ffffff;
-      --text:#4a4a4a;
-      --muted:#777;
-      font-family:'Poppins', sans-serif;
-    }
-
-    *{ margin:0; padding:0; box-sizing:border-box; }
-
-    body{
-      background:linear-gradient(145deg, var(--pink), var(--yellow));
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
-
-    .app{
-      width:100%;
-      max-width:900px;
-      background:var(--card);
-      border-radius:22px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.15);
-      overflow:hidden;
-      display:grid;
-      grid-template-columns:300px 1fr;
-      border:4px solid #ffe0f2;
-    }
-
-    /* SIDEBAR */
-    .sidebar{
-      background:#fff7fc;
-      padding:20px;
-      border-right:3px dashed #ffb6d9;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:18px;
-    }
-
-    .logo{
-      width:48px;
-      height:48px;
-      background:var(--pink-dark);
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-size:22px;
-      font-weight:700;
-      box-shadow:0 4px 10px rgba(255,120,200,0.4);
-    }
-
-    h1{
-      font-size:19px;
-      color:var(--text);
-    }
-
-    .btn{
-      padding:10px 14px;
-      border-radius:12px;
-      border:none;
-      cursor:pointer;
-      font-weight:600;
-    }
-
-    .btn.primary{
-      background:var(--pink);
-      color:#fff;
-      box-shadow:0 4px 8px rgba(255,150,200,0.4);
-    }
-
-    .btn.ghost{
-      background:#fff;
-      border:2px solid var(--pink);
-      color:var(--pink-dark);
-    }
-
-    .controls{ display:flex; gap:10px; margin-bottom:16px; }
-
-    .search input{
-      width:100%;
-      padding:10px;
-      border-radius:10px;
-      border:2px solid #ffd6eb;
-      background:#fff;
-    }
-
-    .note-item{
-      background:#fff;
-      padding:14px;
-      border-radius:14px;
-      border:2px solid #ffe0f2;
-      margin-bottom:12px;
-      cursor:pointer;
-      transition:0.25s;
-    }
-
-    .note-item:hover{
-      transform:translateY(-4px);
-      background:#fff9fe;
-      box-shadow:0 6px 12px rgba(255,150,200,0.25);
-    }
-
-    .note-item .title{
-      font-weight:700;
-      color:var(--text);
-    }
-
-    .note-item .meta{
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    /* EDITOR */
-    .editor{
-      padding:24px;
-      background:#ffffff;
-    }
-
-    .title-input{
-      width:100%;
-      padding:12px;
-      border-radius:12px;
-      border:2px solid #ffd6eb;
-      font-size:18px;
-      margin-bottom:12px;
-    }
-
-    textarea{
-      width:100%;
-      min-height:360px;
-      padding:14px;
-      border-radius:14px;
-      border:2px solid #ffd6eb;
-      resize:vertical;
-      font-size:15px;
-      background:#fff7fc;
-    }
-
-    .preview{
-      margin-top:16px;
-      padding:14px;
-      border-radius:14px;
-      border:2px solid #ffd6eb;
-      min-height:200px;
-      background:#fffafa;
-    }
-
-    .note-actions{ display:flex; gap:10px; }
-
-    .small{
-      padding:10px 12px;
-      border-radius:10px;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
-    }
-
-    .saveBtn{ background:var(--pink-dark); color:#fff; }
-    .delBtn{ background:#ff6b6b; color:#fff; }
-
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mini Dictionary App</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a8e6ff, #ffd6e8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background: #ffffffcc;
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  h2 {
+    margin: 0 0 15px;
+    text-align: center;
+    font-size: 24px;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #cfcfcf;
+    font-size: 16px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #6a5acd;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #5548c8;
+  }
+  .result {
+    background: #fff;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  .word {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .phonetic {
+    color: #666;
+    margin-bottom: 10px;
+  }
+</style>
 </head>
-
 <body>
-  <div class="app">
-
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-      <div class="brand">
-        <div class="logo">✿</div>
-        <div>
-          <h1>Cute Notes</h1>
-        </div>
-      </div>
-
-      <div class="controls">
-        <button class="btn primary" onclick="createNew()">+ New</button>
-        <button class="btn ghost" onclick="exportNotes()">Export</button>
-      </div>
-
-      <div class="search"><input id="searchInput" placeholder="Search..." oninput="renderList()"></div>
-
-      <div id="noteList"></div>
-    </div>
-
-    <!-- EDITOR -->
-    <div class="editor">
-      <input id="noteTitle" class="title-input" placeholder="Cute title..." />
-
-      <textarea id="noteContent" placeholder="Write your cute note here..." oninput="autoSavePreview()"></textarea>
-
-      <div class="note-actions">
-        <button class="small saveBtn" onclick="saveNote()">Save</button>
-        <button class="small delBtn" onclick="deleteCurrent()">Delete</button>
-      </div>
-
-      <div class="preview" id="previewArea">Preview will appear here ✦</div>
-    </div>
+  <div class="card">
+    <h2>📘 Cute Dictionary</h2>
+    <input type="text" id="wordInput" placeholder="Type a word...">
+    <button onclick="searchWord()">Search</button>
+    <div id="output"></div>
   </div>
 
-  <script>
-    const STORAGE_KEY='cute_notes_v1';
-    let notes=loadNotes();
-    let currentId=null;
+<script>
+async function searchWord() {
+  const word = document.getElementById('wordInput').value.trim();
+  if (!word) return;
+  const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
-    const list=document.getElementById('noteList');
-    const title=document.getElementById('noteTitle');
-    const content=document.getElementById('noteContent');
-    const preview=document.getElementById('previewArea');
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-    function loadNotes(){ try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch{return[]} }
-    function saveNotes(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(notes)); }
-
-    function renderList(){
-      const q=document.getElementById('searchInput').value.toLowerCase();
-      list.innerHTML='';
-      notes.filter(n=>n.title.toLowerCase().includes(q)||n.content.toLowerCase().includes(q)).forEach(n=>{
-        const d=document.createElement('div');
-        d.className='note-item';
-        d.innerHTML=`<div class='title'>${n.title||'Untitled'}</div><div class='meta'>${new Date(n.updated).toLocaleString()}</div>`;
-        d.onclick=()=>openNote(n.id);
-        list.appendChild(d);
-      })
+    if (data.title === "No Definitions Found") {
+      document.getElementById('output').innerHTML = `<p>No definition found 😞</p>`;
+      return;
     }
 
-    function createNew(){
-      const id='note_'+Date.now();
-      const n={id,title:'',content:'',updated:Date.now()};
-      notes.push(n); saveNotes(); renderList(); openNote(id);
-    }
+    const meaning = data[0].meanings[0].definitions[0].definition;
+    const phonetic = data[0].phonetics[0]?.text || "";
 
-    function openNote(id){
-      currentId=id;
-      const n=notes.find(x=>x.id===id);
-      if(!n)return;
-      title.value=n.title;
-      content.value=n.content;
-      renderPreview(n.content);
-    }
-
-    function saveNote(){
-      if(!currentId)return;
-      const n=notes.find(x=>x.id===currentId);
-      n.title=title.value;
-      n.content=content.value;
-      n.updated=Date.now();
-      saveNotes(); renderList();
-    }
-
-    function deleteCurrent(){
-      if(!currentId)return; notes=notes.filter(x=>x.id!==currentId);
-      currentId=null; saveNotes(); renderList(); title.value=''; content.value=''; preview.textContent='';
-    }
-
-    function renderPreview(t){ preview.innerHTML=t.replace(/\n/g,'<br>'); }
-    function autoSavePreview(){ renderPreview(content.value); }
-
-    renderList();
-  </script>
+    document.getElementById('output').innerHTML = `
+      <div class='result'>
+        <div class='word'>${word}</div>
+        <div class='phonetic'>${phonetic}</div>
+        <p>${meaning}</p>
+      </div>
+    `;
+  } catch (error) {
+    document.getElementById('output').innerHTML = `<p>Error fetching data</p>`;
+  }
+}
+</script>
 </body>
 </html>
